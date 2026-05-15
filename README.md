@@ -29,7 +29,7 @@ There are two nodes in [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/Co
     - This extension is a port of this one
 - `SpectrumSDXLCalibrated` （レガシー／非準拠ノード）
     - There are some non-principled additions like "calibration" which are not faithful to the [paper](https://arxiv.org/abs/2603.01623)
-    - This port has already been released at https://github.com/hirorohi03/sd-webui-forge-spectrum
+    - This port has already been released as [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)
 
 The [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) explains it as follows:
 
@@ -42,9 +42,24 @@ The [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl
 - Python 3.13.12
 - PyTorch 2.11.0+cu130
 - SageAttention 2
-- RTX 5090 
+- RTX 5090
 
-Coming soon.
+**waiIllustriousSDXL_v160 (30-step Euler)**
+| Normal | sd-forge-spectrum-faithful (This) | [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) | [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum) | [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum) (Calibrated 0.5) |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Normal1](/images/sdxl1_normal.png) | ![Faith1](/images/sdxl1_faith.png) | ![Neo1](/images/sdxl1_neo.png) | ![Reforge1](/images/sdxl1_reforge.png) | ![Cal1](/images/sdxl1_cal.png) |
+| **3.22 s** | **1.87 s** | **1.79 s** | **1.98 s** | **1.85 s** |
+| ![Normal2](/images/sdxl2_normal.png) | ![Faith2](/images/sdxl2_faith.png) | ![Neo2](/images/sdxl2_neo.png) | ![Reforge2](/images/sdxl2_reforge.png) | ![Cal2](/images/sdxl2_cal.png) |
+| **3.23 s** | **1.91 s** | **1.77 s** | **1.79 s** | **1.84 s** |
+
+**anima-base-v1.0 (30-step er-sde)**
+| Normal  | spectrum-faithful (This) | [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) | [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum) | [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum) (Calibrated 0.5) |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Anima_Normal](/images/anima_normal.png) | ![Anima_Faith](/images/anima_faith.png) | ![Anima_Neo](/images/anima_neo.png) | ![Anima_Reforge](/images/anima_reforge.png) | ![Anima_Cal](/images/anima_cal.png) |
+| **6.50 s** | **3.45 s** | **4.11 s** | **3.82 s** | **3.49 s** |
+
+- Each one generates slightly different images.
+- [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum) may generate artifacts more frequently than the others.
 
 ## 📦 Installation
 1. Open the **Extensions** tab in your WebUI.
@@ -71,6 +86,12 @@ Check the checkbox in the **Spectrum Adaptive Forecaster** tab of txt2img or img
 | **Stop Caching Step<BR>`stop_caching_step`** | 0.0 - 1.0 | **0.90** | Number of steps at which prediction stops and returns to full model execution<BR>Specified as a percentage of the total number of steps |
 
 If you are using this extension with Low Step LoRAs such as [Anima Turbo LoRA] or [DMD2 LoRA], please reduce the Warmup Steps to 1 or 2.
+
+## ⚠️ Known Limitations
+
+- If you install this extension with [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum) or [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum) at the same time, an error will occur when launching the WebUI.
+    - You can install this extension without conflicting with Forge Neo's [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo).
+- I do not guarantee proper operation if both this extension and Forge Neo's [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) are enabled and generated.
 
 ## 📜 Credits & References
 *   **Paper**: [Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration](https://arxiv.org/abs/2603.01623)

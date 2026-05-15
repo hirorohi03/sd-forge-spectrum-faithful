@@ -29,7 +29,7 @@ Forge/reForgeへの移植にあたっては以下の拡張機能の実装を参�
     - 当拡張機能はこちらを移植したもの
 - `SpectrumSDXLCalibrated` （レガシー／非準拠ノード）
     - 「キャリブレーション」などの[論文](https://arxiv.org/abs/2603.01623)に忠実ではない原則に反した機能を実装
-    - こちらの移植版は https://github.com/hirorohi03/sd-webui-forge-spectrum で公開済み
+    - こちらの移植版は[sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)で公開済み
 
 [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl)では以下のように説明されています。
 
@@ -42,9 +42,24 @@ Forge/reForgeへの移植にあたっては以下の拡張機能の実装を参�
 - Python 3.13.12
 - PyTorch 2.11.0+cu130
 - SageAttention 2
-- RTX 5090 
+- RTX 5090
 
-Coming soon.
+**waiIllustriousSDXL_v160 (30-step Euler)**
+| Normal | sd-forge-spectrum-faithful (This) | [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) | [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum) | [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum) (Calibrated 0.5) |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Normal1](/images/sdxl1_normal.png) | ![Faith1](/images/sdxl1_faith.png) | ![Neo1](/images/sdxl1_neo.png) | ![Reforge1](/images/sdxl1_reforge.png) | ![Cal1](/images/sdxl1_cal.png) |
+| **3.22 s** | **1.87 s** | **1.79 s** | **1.98 s** | **1.85 s** |
+| ![Normal2](/images/sdxl2_normal.png) | ![Faith2](/images/sdxl2_faith.png) | ![Neo2](/images/sdxl2_neo.png) | ![Reforge2](/images/sdxl2_reforge.png) | ![Cal2](/images/sdxl2_cal.png) |
+| **3.23 s** | **1.91 s** | **1.77 s** | **1.79 s** | **1.84 s** |
+
+**anima-base-v1.0 (30-step er-sde)**
+| Normal  | spectrum-faithful (This) | [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) | [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum) | [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum) (Calibrated 0.5) |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Anima_Normal](/images/anima_normal.png) | ![Anima_Faith](/images/anima_faith.png) | ![Anima_Neo](/images/anima_neo.png) | ![Anima_Reforge](/images/anima_reforge.png) | ![Anima_Cal](/images/anima_cal.png) |
+| **6.50 s** | **3.45 s** | **4.11 s** | **3.82 s** | **3.49 s** |
+
+- いずれも少し異なる画像が生成されます。
+- [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)はアーティファクトを生成することが他より多いかもしれません。
 
 ## 📦 インストール方法
 1. WebUIの**Extensions**タブを開きます。
@@ -70,6 +85,12 @@ txt2imgまたはimg2imgの**Spectrum Adaptive Forecaster**タブのチェック�
 | **Stop Caching Step<BR>`stop_caching_step`** | 0.0 - 1.0 | **0.90** | 予測を停止しフルモデル実行に戻すステップ数<BR>全ステップ数に対する割合で指定 |
 
 [Anima Turbo LoRA](https://civitai.com/models/2560840/)や[DMD2 LoRA](https://civitai.com/models/2466415/)などのステップ数削減LoRAと併用する場合はWarmup Stepsを1～2に減らしてください。
+
+## ⚠️ 既知の制約
+
+- この拡張機能を[sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)、[sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)と同時にインストールすると、WebUI起動時にエラーが発生します。
+    - この拡張機能はForge Neoの[Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)とは競合せずインストールできます。
+- この拡張機能とForge Neoの[Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)と両方を有効にして生成した場合の動作は保証しません。
 
 ## 📜 クレジットと参考文献
 *   **論文**: [Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration](https://arxiv.org/abs/2603.01623)
