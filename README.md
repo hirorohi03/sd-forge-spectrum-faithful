@@ -27,7 +27,7 @@ There are two nodes in [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/Co
 - `SpectrumSDXLC`
     - Porting of the [official forecaster code](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py)
     - This extension is a port of this one
-- `SpectrumSDXLCalibrated` （レガシー／非準拠ノード）
+- `SpectrumSDXLCalibrated` (Legacy / Non-Faithful Node)
     - There are some non-principled additions like "calibration" which are not faithful to the [paper](https://arxiv.org/abs/2603.01623)
     - This port has already been released as [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)
 
