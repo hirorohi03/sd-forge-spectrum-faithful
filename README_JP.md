@@ -37,6 +37,14 @@ Forge/reForgeへの移植にあたっては以下の拡張機能の実装を参�
 > 
 > *リピーターの方への説明：* このノードの以前のバージョンは、当初公式のforecaster実装を見つけることができなかったため、実質的にゼロから「バイブコーディング」されたものでした。その結果、「キャリブレーション」のような、興味深いものの論文に忠実ではない、いくらか原則に反する追加が行われてしまいました。この問題は、[公式のforecasterコード](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py)を`SpectrumSDXL`ノードに移植することで解決されました。より安定的で原則に基づいた結果を得るため、この正確な実装へ移行してください。
 
+## 📖 更新履歴
+
+### 2026/5/16
+
+- 他のSpectrum拡張機能と同時にインストールしてもエラーが発生しないようにしました（同時に有効にして生成した場合の動作は保証しません）。
+    - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
+    - [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)
+
 ## 📊 性能比較と画像サンプル
 - Stable Diffusion WebUI Forge - Neo v2.23
 - Python 3.13.12
@@ -88,9 +96,11 @@ txt2imgまたはimg2imgの**Spectrum Adaptive Forecaster**タブのチェック�
 
 ## ⚠️ 既知の制約
 
-- この拡張機能を[sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)、[sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)と同時にインストールすると、WebUI起動時にエラーが発生します。
-    - この拡張機能はForge Neoの[Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)とは競合せずインストールできます。
-- この拡張機能とForge Neoの[Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)と両方を有効にして生成した場合の動作は保証しません。
+- この拡張機能は以下のSpectrum機能と競合せずインストールできますが、同時に有効にして生成した場合の動作は保証しません。
+    - [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo)のSpectrum Integrated
+    - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
+    - [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)
+- Forge Neoの`Settings`の`Ignore Negative Prompt During Later Steps`または`Skip Negative Prompt During Later Steps`と併用した場合にエラーが発生する可能性があります。
 
 ## 📜 クレジットと参考文献
 *   **論文**: [Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration](https://arxiv.org/abs/2603.01623)

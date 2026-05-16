@@ -6,11 +6,11 @@
 
 </div>
 
-This is a Port of `SpectrumSDXLC` node from [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). 
+This is a port of `SpectrumSDXLC` node from [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl) to run as an extension for Stable Diffusion WebUI Forge/reForge (it does not work on A1111). 
 
 ## 🚀 Overview
 
-By utilizing the Spectrum feature and the Calibration feature uniquely implemented by the ComfyUI Spectrum SDXL Node, you can reduce image generation time while minimizing image degradation and visual changes.
+By utilizing the Spectrum feature, you can reduce image generation time while minimizing image degradation and visual changes.
 
 I have confirmed that it works for image generation using SDXL (Forge, reForge, Forge Neo) and Anima (Forge Neo).
 
@@ -36,6 +36,14 @@ The [ComfyUI Spectrum SDXL Node](https://github.com/ruwwww/ComfyUI-Spectrum-sdxl
 > **Legacy / Non-Faithful Node:** The `SpectrumSDXLCalibrated` node is now considered **legacy**. 
 > 
 > *Clarification for returning users:* The previous version of this node was essentially "vibe-coded" from scratch because I couldn't initially find the official forecaster implementation. This led to some non-principled additions like "calibration" which, while interesting, are not faithful to the paper. This has now been solved by porting the [official forecaster code](https://github.com/hanjq17/Spectrum/blob/main/src/utils/basis_utils.py) into the `SpectrumSDXL` node. Please migrate to the faithful implementation for more stable and principled results.
+
+## 📖 Changelog
+
+### 2026/5/16
+
+- Fixed an issue where errors would occur when installed alongside other Spectrum extensions.（I do not guarantee its behavior if they are enabled and generate at the same time.）
+    - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
+    - [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)
 
 ## 📊 Performance Comparison and Sample Images
 - Stable Diffusion WebUI Forge - Neo v2.23
@@ -89,9 +97,11 @@ If you are using this extension with Low Step LoRAs such as [Anima Turbo LoRA] o
 
 ## ⚠️ Known Limitations
 
-- If you install this extension with [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum) or [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum) at the same time, an error will occur when launching the WebUI.
-    - You can install this extension without conflicting with Forge Neo's [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo).
-- I do not guarantee proper operation if both this extension and Forge Neo's [Spectrum Integrated](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) are enabled and generated.
+- This extension can be installed alongside the following Spectrum extensions without conflict, but I do not guarantee its behavior if they are enabled and generate at the same time.
+    - [Forge Neo](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo) Spectrum Integrated
+    - [sd-webui-reforge-spectrum](https://github.com/wai55555/sd-webui-reforge-spectrum)
+    - [sd-webui-forge-spectrum](https://github.com/hirorohi03/sd-webui-forge-spectrum)
+- This extension may cause errors when used in conjunction with `Ignore Negative Prompt During Later Steps` or `Skip Negative Prompt During Later Steps` settings in Forge Neo.
 
 ## 📜 Credits & References
 *   **Paper**: [Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration](https://arxiv.org/abs/2603.01623)
