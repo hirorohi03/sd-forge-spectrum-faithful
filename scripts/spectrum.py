@@ -6,7 +6,7 @@ import sys
 import math
 import torch
 import gradio as gr
-from spectrum_core.forecaster import ChebyshevForecaster, Spectrum
+from spectrum_core_faithful.forecaster import ChebyshevForecaster, Spectrum
 
 from modules import scripts, shared
 from modules.infotext_utils import PasteField
